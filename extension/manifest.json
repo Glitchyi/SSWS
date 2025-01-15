@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Caesar Cipher HTML Decoder",
+    "version": "1.0",
+    "description": "Decodes HTML files encrypted with Caesar cipher",
+    "permissions": ["activeTab"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }]
+  }
+  
