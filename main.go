@@ -42,17 +42,27 @@ func encrypt(){
     }
 }
 
-func main() {
-    // Create file server handler
-    fs := http.FileServer(http.Dir("public"))
-    
-    encrypt()
-    // Handle all requests by serving a file
-    http.Handle("/", fs)
-    
-    // Start server on port 8080
-    port := ":8080"
+func handler(w http.ResponseWriter, r *http.Request) {
+    files, err := os.ReadDir("static")
+    if err != nil {
+        log.Fatal(err)
+    }
+    for _, file := range files {
+        content, err := os.ReadFile("public/" + file.Name())
+        fmt.Println(string(content))
+        fmt.Fprint(w, string(content))
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+    // fmt.Fprintf(w, "Hello, World!")
+}
 
-    fmt.Printf("Starting server on port %s\n", port)
-    log.Fatal(http.ListenAndServe(port, nil))
+func main() {
+    encrypt()
+    http.HandleFunc("/", handler)
+    log.Println("Starting server on :8080")
+    if err := http.ListenAndServe(":8080", nil); err != nil {
+        log.Fatal(err)
+    }
 }
