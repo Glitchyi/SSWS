@@ -1,5 +1,7 @@
 # Safe Secure Web Server (SSWS)
 
+![swss](https://github.com/user-attachments/assets/5e43673b-e5bd-44a9-a600-56df2c715806)
+
 > [!IMPORTANT]
 > NOW WITH AN EXTENSION BUILT-IN
 
