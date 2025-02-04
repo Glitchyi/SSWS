@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > NOW WITH AN EXTENSION BUILT-IN
 
-A web server implementation designed to display warnings against unauthorized web scraping.
+A web server implementation similar to NGINX designed to work against unauthorized web scraping.
 
 ## Project Structure
 
@@ -11,7 +11,6 @@ A web server implementation designed to display warnings against unauthorized we
 SSWS/
 ├── extension/              # Chrome extension files
 │   ├── content.js         # Extension content script
-│   ├── jquery-3.7.1.min.js
 │   ├── manifest.json      # Extension configuration
 │   ├── popup.html        
 │   └── popup.js
@@ -28,10 +27,9 @@ SSWS/
 
 ## Features
 
-- Serves warning messages to web scraping bots
-- Static file serving capability
+- Serves jumbled/poisoned content to web scraping bots
 - Test scraping script to verify behavior
-- Chrome extension support
+- Chrome extension to undo the jumbled content
 
 ## Working
 
