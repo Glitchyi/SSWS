@@ -38,7 +38,7 @@ func encrypt(){
         }
 
 
-        fmt.Printf("Contents of %s:\n%s\n", file.Name(), content)
+        // fmt.Printf("Contents of %s:\n%s\n", file.Name(), content)
     }
 }
 
@@ -49,7 +49,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
     for _, file := range files {
         content, err := os.ReadFile("public/" + file.Name())
-        fmt.Println(string(content))
         fmt.Fprint(w, string(content))
         if err != nil {
             log.Fatal(err)
