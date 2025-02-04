@@ -57,7 +57,8 @@ The content deliverd to the client will be jumbled (later poisoned) content an e
 
 This can be undone using browser extension, that will unscramble the `Jumbled content` and converts it back to the `Original content`.
 
-In the case of poisoned text we plan to implement some way of sending back the original content.
+> [!NOTE]
+> In the case of poisoned text we plan to implement some way of sending back the original content.
 
 ## Getting Started
 
@@ -91,7 +92,34 @@ The extension component is located in the extension directory and can be loaded 
 
 The steps are:
 
-1. 
+1. **Open the url**
+
+```text
+chrome://extensions/
+```
+> [!NOTE]
+> This is the extensions page for chrome where you will see all your install extensions
+
+2. **Toggle developer mode**
+
+![image](https://github.com/user-attachments/assets/bf000a0b-c790-4df8-b615-bc5b18a34c26)
+
+> On the top and right corner of the page there will be a toggle to turn on developer mode, turn this on as we want to load our extension.
+
+3. **Load an upacked extension**
+
+![image](https://github.com/user-attachments/assets/410031c4-f322-4630-bb18-8a0a16f2eb7c)
+
+> Once this option is choosed a folder picker should open up and then you have to select the `extension` folder from this project.
+
+4. **Use**
+
+![image](https://github.com/user-attachments/assets/5a89da02-7409-4361-84fb-7b8f7d488653)
+
+> Now you should be able to see the extension on your browser and you can activate it by clicking on it.
+
+> [!CAUTION]
+> This is the extensions is updating the contents on the website, this will work on all websites but may lead to undesirable results
 
 ## License
 
