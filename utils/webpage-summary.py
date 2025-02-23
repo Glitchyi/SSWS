@@ -11,9 +11,11 @@ def flask_app():
     import os
     from langchain_groq import ChatGroq
     from langchain_core.vectorstores import InMemoryVectorStore
+    from lanchain
     from langchain_huggingface import HuggingFaceEmbeddings
-    from flask import Flask, request
+    from flask import Flask, request, jsonify
     from langchain_community.document_loaders import WebBaseLoader
+    from bs4 import BeautifulSoup
     from langchain_core.prompts import PromptTemplate
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     from langchain_core.runnables import RunnablePassthrough
@@ -48,8 +50,20 @@ def flask_app():
     @web_app.post("/")
     def home():
         url = request.args.get('url')
+        data = request.get_json()
+        
+        if not data or 'html' not in data:
+            return jsonify({'error': 'No HTML content provided'}), 400
+        
+        # Get HTML content from request
+        html_content = data['html']
+        
+        # Print the received HTML content
+        print("Received HTML content:")
+        print(html_content)
+        
         loader = WebBaseLoader(
-        web_paths=(url,),
+            web_paths=(url,),
         )
         html = loader.load()
         
