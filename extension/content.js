@@ -7,11 +7,9 @@ async function decryptData(encryptedData, privateKeyPem) {
     .replace(pemFooter, "")
     .replace(/[\r\n]/g, "")
     .trim();
-  console.log(pemContents);
   const fromBase64 = (base64String) =>
     Uint8Array.from(atob(base64String), (c) => c.charCodeAt(0));
   const binaryKey = fromBase64(pemContents);
-  console.log(binaryKey);
   // Import the RSA private key
   let privateKey;
   try {
@@ -86,13 +84,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       try {
         const response = await fetch(window.location.href + "index.html.json");
         const data = await response.json();
-        console.error(data);
         // Fix: Swap the parameters - privateKey should be first, data second
         const decodedHTML = await decryptData(data, request.privateKey);
         document.getElementsByTagName("body")[0].innerHTML = decodedHTML;
         sendResponse({ result: "Decoded message" });
       } catch (error) {
         console.error("Operation failed:", error);
+        alert("Operation failed: Try checking the private key / Connection or try contacting the admin");
         sendResponse({ error: error.message });
       }
     };
@@ -100,12 +98,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // Execute the async function
     handleDecryption();
 
-    fetch(window.location.href + "status", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
     // Return true to indicate we'll send a response asynchronously
     return true;
   }

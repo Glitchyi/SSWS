@@ -1,15 +1,23 @@
 {
     "manifest_version": 3,
-    "name": "Caesar Cipher HTML Decoder",
+    "name": "SWSS",
     "version": "1.0",
-    "description": "Decodes HTML files encrypted with Caesar cipher",
-    "permissions": ["activeTab"],
+    "description": "Decodes HTML files encrypted with RSA",
+    "permissions": [
+        "activeTab",
+        "declarativeNetRequest"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
     "action": {
-      "default_popup": "popup.html"
+        "default_popup": "popup.html"
     },
     "content_scripts": [{
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }]
-  }
-  
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+    }],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

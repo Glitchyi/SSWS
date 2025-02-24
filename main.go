@@ -39,6 +39,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
+	w.Header().Set("SWSS", "true")
+	w.Header().Set("Access-Control-Expose-Headers", "SWSS")
+
 	fmt.Fprintln(w, string(content))
 
 	// Log response details
