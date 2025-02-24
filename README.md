@@ -1,4 +1,5 @@
-![swss-long](https://github.com/user-attachments/assets/5e07dc3e-dba1-4b05-abd3-aa46b648c33b)
+![swss-long](https://github.com/user-attachments/assets/370af212-60aa-4140-ad0e-8c0d008276be)
+
 
 # Safe Secure Web Server (SSWS)
 
