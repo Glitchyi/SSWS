@@ -2,3 +2,5 @@
 .env
 public
 *.pem
+__pycache__
+*.pyc

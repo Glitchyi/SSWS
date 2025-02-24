@@ -1,6 +1,5 @@
 ![swss-long](https://github.com/user-attachments/assets/5e07dc3e-dba1-4b05-abd3-aa46b648c33b)
 
-
 # Safe Secure Web Server (SSWS)
 
 > [!IMPORTANT]
@@ -71,11 +70,15 @@ This can be undone using browser extension, that will unscramble the `Jumbled co
 
 ### Running the Server
 
-1. Start the Go server:
+1. Generate keys using the `keys/keygen.py`, the requrements for the program are given in the `keys/requrements.txt`
 
-```sh
-go run .
-```
+2. Public and private keys will be generated and these will be used to encrypt and decrypt the data. The client extension expects the private key named as `private_key.py` and `public_key.py` is the public key that the server uses.
+
+3. Start the Go server:
+
+    ```sh
+    go run .
+    ```
 
 The server will start on port 8080 by default.
 
@@ -95,29 +98,30 @@ The steps are:
 
 1. **Open the url**
 
-```text
-chrome://extensions/
-```
-> [!NOTE]
-> This is the extensions page for chrome where you will see all your install extensions
+    ```text
+    chrome://extensions/
+    ```
+
+    > [!NOTE]
+    > This is the extensions page for chrome where you will see all your install extensions
 
 2. **Toggle developer mode**
 
-![image](https://github.com/user-attachments/assets/bf000a0b-c790-4df8-b615-bc5b18a34c26)
+    ![image](https://github.com/user-attachments/assets/bf000a0b-c790-4df8-b615-bc5b18a34c26)
 
-> On the top and right corner of the page there will be a toggle to turn on developer mode, turn this on as we want to load our extension.
+    > On the top and right corner of the page there will be a toggle to turn on developer mode, turn this on as we want to load our extension.
 
 3. **Load an upacked extension**
 
-![image](https://github.com/user-attachments/assets/410031c4-f322-4630-bb18-8a0a16f2eb7c)
+    ![image](https://github.com/user-attachments/assets/410031c4-f322-4630-bb18-8a0a16f2eb7c)
 
-> Once this option is choosed a folder picker should open up and then you have to select the `extension` folder from this project.
+    > Once this option is choosed a folder picker should open up and then you have to select the `extension` folder from this project.
 
 4. **Use**
 
-![image](https://github.com/user-attachments/assets/5a89da02-7409-4361-84fb-7b8f7d488653)
+    ![image](https://github.com/user-attachments/assets/5a89da02-7409-4361-84fb-7b8f7d488653)
 
-> Now you should be able to see the extension on your browser and you can activate it by clicking on it.
+    > Now you should be able to see the extension on your browser and you can activate it by clicking on it.
 
 > [!CAUTION]
 > This is the extensions is updating the contents on the website, this will work on all websites but may lead to undesirable results
