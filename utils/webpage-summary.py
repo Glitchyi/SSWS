@@ -11,7 +11,7 @@ def flask_app():
     import os
     from langchain_groq import ChatGroq
     from langchain_core.vectorstores import InMemoryVectorStore
-    from lanchain
+
     from langchain_huggingface import HuggingFaceEmbeddings
     from flask import Flask, request, jsonify
     from langchain_community.document_loaders import WebBaseLoader
