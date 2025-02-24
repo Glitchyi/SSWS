@@ -5,11 +5,20 @@
   <style>
     body { width: 300px; padding: 10px; }
     button { margin: 5px; }
+    .app { display: flex; flex-direction: column; gap: 10px;} 
+    div { display: flex; justify-content: space-between; }
+    textarea { height: 200px; border-radius: 12px; padding: 20px; }
+    button { padding: 10px; border-radius: calc(infinity * 1px); }
   </style>
 </head>
 <body>
-  <button id="decode">Decode HTML</button>
-  <button id="test">Test</button>
+  <div class="app">
+    <div>
+      <button id="decode">Decode HTML</button>
+      <button id="clear">Clear Private Key Cache</button>
+    </div>
+    <textarea name="key" id="private-key" placeholder="Enter your private key here" style="resize: none;"></textarea>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>

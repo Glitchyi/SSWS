@@ -99,6 +99,14 @@ func Encrypt() error {
 			return fmt.Errorf("encrypting AES key: %w", err)
 		}
 
+		content_string := base64.StdEncoding.EncodeToString(ciphertext)
+
+		err = os.WriteFile("public/"+file.Name(), []byte(content_string), 0644)
+		if err != nil {
+			return fmt.Errorf("writing encrypted file %s: %w", file.Name(), err)
+		}
+		
+
 		// Create encrypted data structure
 		encData := EncryptedData{
 			Content:    base64.StdEncoding.EncodeToString(ciphertext),
