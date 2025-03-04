@@ -1,6 +1,5 @@
 package cypher
 
-
 import (
 	"os"
 	"fmt"

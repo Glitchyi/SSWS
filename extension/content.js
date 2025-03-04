@@ -86,7 +86,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const data = await response.json();
         // Fix: Swap the parameters - privateKey should be first, data second
         const decodedHTML = await decryptData(data, request.privateKey);
-        document.getElementsByTagName("body")[0].innerHTML = decodedHTML;
+        document.open()
+        document.write(decodedHTML)
+        document.close()
+        // document.getElementsByTagName("body")[0].innerHTML = decodedHTML;
         sendResponse({ result: "Decoded message" });
       } catch (error) {
         console.error("Operation failed:", error);
