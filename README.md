@@ -1,4 +1,5 @@
-![swss-long](https://github.com/user-attachments/assets/5e07dc3e-dba1-4b05-abd3-aa46b648c33b)
+![swss-long](https://github.com/user-attachments/assets/370af212-60aa-4140-ad0e-8c0d008276be)
+
 
 # Safe Secure Web Server (SSWS)
 
@@ -11,20 +12,38 @@ A web server implementation similar to NGINX designed to work against unauthoriz
 
 ```txt
 SSWS/
-├── extension/              # Chrome extension files
-│   ├── content.js         # Extension content script
-│   ├── manifest.json      # Extension configuration
-│   ├── popup.html        
-│   └── popup.js
-├── server/                # Server implementation
-│   └── server.go         # Core server logic
-├── static/                # Static web content
-│   └── index.html        # Warning page
-├── public/               # Public assets
-├── images/              
-├── main.go               # Main application entry
-├── webscrape.py         # Test scraping script
-└── go.mod               # Go module definition
+├── api/
+│   └── summarise.go            # API client for webpage summarization
+├── cypher/
+│   └── encryption.go           # Encryption logic implementation
+├── extension/                  # Chrome extension files
+│   ├── background.js           # Extension background script
+│   ├── content.js              # Content script for webpage modification
+│   ├── manifest.json           # Extension manifest
+│   ├── popup.html              # Extension popup UI
+│   └── popup.js                # Popup UI logic
+├── images/
+│   └── url.png                 # Image assets
+├── keys/                       # Encryption key management
+│   ├── keygen.py               # Key generation script
+│   ├── keytest.py              # Key testing utilities
+│   ├── private_key.pem         # Private key file
+│   ├── public_key.pem          # Public key file
+│   └── requirements.txt        # Python dependencies
+├── public/                     # Server output directory
+│   ├── index.html              # Encrypted/jumbled content
+│   ├── index.html.json         # Encryption metadata
+│   └── summary.html            # Generated summary
+├── static/                     # Original content directory
+│   └── index.html              # Source webpage
+├── utils/                      # Utility scripts
+│   ├── webpage-summary.py      # Summary generation
+│   └── webscrape.py            # Test scraping script
+├── .gitignore                  # Git ignore rules
+├── go.mod                      # Go module file
+├── go.sum                      # Go dependencies checksum
+├── main.go                     # Server entry point
+└── README.md                   # Project documentation
 ```
 
 ## Features

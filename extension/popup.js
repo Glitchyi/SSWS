@@ -29,6 +29,14 @@ document.getElementById("decode").addEventListener("click", () => {
     chrome.tabs.sendMessage(tabs[0].id, {
       action: "decode",
       privateKey: privateKey,
+    }, response => {
+      if (response.result) {
+        console.log(response.result);
+      }else if (response.error) {
+        console.error(response.error);
+      }
     });
   });
 });
+
+

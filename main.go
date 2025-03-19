@@ -51,6 +51,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	combinedContent := string(seo_content) + string(content) 
 	fmt.Fprintln(w, combinedContent)
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("SWSS", "true")
+	w.Header().Set("Access-Control-Expose-Headers", "SWSS")
 
 	// Log response details
 	success("[%s] Response sent: %d bytes in %v\n",
