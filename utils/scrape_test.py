@@ -1,11 +1,3 @@
-from langchain_groq import ChatGroq
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_core.vectorstores import InMemoryVectorStore
-from langchain_core.documents import Document
-from langchain_core.prompts import PromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
@@ -22,38 +14,46 @@ def load_html_file(file_path):
         print(f"Error loading HTML file: {e}")
         return None
 
-# Extract text from HTML content
-def extract_text_from_html(html_content):
+# Extract meta tags from HTML content
+def extract_meta_tags(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
     
-    # Remove script and style elements
-    for script in soup(["script", "style"]):
-        script.extract()
+    # Find all meta tags
+    meta_tags = soup.find_all('meta')
     
-    # Get text
-    text = soup.get_text(separator=" ", strip=True)
-    return text
+    # Create a list to store meta tag information
+    meta_info = []
+    
+    for tag in meta_tags:
+        tag_info = {}
+        
+        # Get all attributes
+        for attr, value in tag.attrs.items():
+            tag_info[attr] = value
+            
+        meta_info.append(tag_info)
+        
+    return meta_info
 
 # Load and process the HTML file
 html_file_path = "../static/index.html"  # Adjusted path since we're in utils folder
 html_content = load_html_file(html_file_path)
 
 if html_content:
-    # Extract text from HTML
-    text_content = extract_text_from_html(html_content)
+    # Extract meta tags
+    meta_tags = extract_meta_tags(html_content)
     
-    # Print the extracted content
-    print("\n----- WEBSITE CONTENT -----\n")
-    print(text_content)
-    print("\n--------------------------\n")
-    
-    # Print some statistics about the content
-    print(f"Content length: {len(text_content)} characters")
-    print(f"Word count: {len(text_content.split())}")
-    
-    # Optional: Print a sample of the beginning of the content
-    print("\nSample of content (first 500 characters):")
-    print(text_content[:500])
+    # Print the extracted meta tags
+    print("\n----- META TAGS -----\n")
+    if meta_tags:
+        for i, tag in enumerate(meta_tags, 1):
+            print(f"Meta Tag #{i}:")
+            for attr, value in tag.items():
+                print(f"  {attr}: {value}")
+            print()
+    else:
+        print("No meta tags found in the HTML file.")
+    print("--------------------------\n")
     
 else:
     print("Failed to load HTML file. Please check the file path.")
