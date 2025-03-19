@@ -2,20 +2,16 @@ import modal
 
 app = modal.App(name='web-sumaru')
 
-image = modal.Image.debian_slim().pip_install("flask","langchain-groq", "langchain", "langchain-community", "langchain-huggingface", "langgraph", "bs4", "playwright", "chromadb")
+image = modal.Image.debian_slim().pip_install("flask","langchain-groq","langchain","langchain-community","langchain-huggingface","langgraph","playwright","chromadb")
 
 
 @app.function(image=image, secrets=[modal.Secret.from_name("GROQ_API_KEY")])
 @modal.wsgi_app()
 def flask_app():
-    import os
     from langchain_groq import ChatGroq
     from langchain_core.vectorstores import InMemoryVectorStore
-    from lanchain
     from langchain_huggingface import HuggingFaceEmbeddings
-    from flask import Flask, request, jsonify
-    from langchain_community.document_loaders import WebBaseLoader
-    from bs4 import BeautifulSoup
+    from langchain.schema import Document  
     from langchain_core.prompts import PromptTemplate
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     from langchain_core.runnables import RunnablePassthrough

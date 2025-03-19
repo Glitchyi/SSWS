@@ -38,8 +38,19 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		)
 		log.Fatal(err)
 	}
+	seo_content, err := os.ReadFile("public/summary.html")
+	if err != nil {
+		errLog("❌ [%s] Error reading file: %v\n",
+			time.Now().Format("15:04:05"),
+			err,
+		)
+		log.Fatal(err)
+	}
 
-	fmt.Fprintln(w, string(content))
+	// Combine both HTML content and SEO content
+	combinedContent := string(seo_content) + string(content) 
+	fmt.Fprintln(w, combinedContent)
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
 	// Log response details
 	success("[%s] Response sent: %d bytes in %v\n",
