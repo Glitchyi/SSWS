@@ -65,28 +65,27 @@ def flask_app():
 
         # Populate the system prompt with the retrieved context
         system_prompt_fmt = prompt.format(context=docs_text)
-#         loader = WebBaseLoader(
-#             web_paths=(url,),
-#         )
-#         html = loader.load()
+        loader = WebBaseLoader(
+            web_paths=(url,),
+        )
+        html = loader.load()
         
-#         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-#         docs = text_splitter.split_documents(html)
-#         _ = vector_store.add_documents(documents=docs)
-#         retriever = vector_store.as_retriever()
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        docs = text_splitter.split_documents(html)
+        _ = vector_store.add_documents(documents=docs)
+        retriever = vector_store.as_retriever()
 
-#         rag_chain = (
-#                 {"context": retriever, "input": RunnablePassthrough()}
-#                 | prompt
-#                 | llm
-#                 | StrOutputParser()
-#             )
+        rag_chain = (
+                {"context": retriever, "input": RunnablePassthrough()}
+                | prompt
+                | llm
+                | StrOutputParser()
+            )
 
-#         summary = rag_chain.invoke("Summarize")
+        summary = rag_chain.invoke("Summarize")
 
-#         return summary
+        return summary
 
 
     return web_app
 
-#  !pip install langchain-groq langchain langchain-community langchain-huggingface langgraph bs4 playwright chromadb
