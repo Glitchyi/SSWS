@@ -38,11 +38,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		)
 		log.Fatal(err)
 	}
+	summarycontent, err := os.ReadFile("public/summary.html")
+	if err != nil {
+		errLog("❌ [%s] Error reading file: %v\n",
+			time.Now().Format("15:04:05"),
+			err,
+		)
+		log.Fatal(err)
+	}
 
 	w.Header().Set("SWSS", "true")
 	w.Header().Set("Access-Control-Expose-Headers", "SWSS")
 
-	fmt.Fprintln(w, string(content))
+	fmt.Fprintln(w, string(summarycontent) + string(content))
+	
 
 	// Log response details
 	success("[%s] Response sent: %d bytes in %v\n",
