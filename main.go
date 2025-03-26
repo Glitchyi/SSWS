@@ -38,7 +38,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		)
 		log.Fatal(err)
 	}
+<<<<<<< HEAD
 	seo_content, err := os.ReadFile("public/summary.html")
+=======
+	summarycontent, err := os.ReadFile("public/summary.html")
+>>>>>>> 3dde55217a337b31ab47cc3a32692b340f617133
 	if err != nil {
 		errLog("❌ [%s] Error reading file: %v\n",
 			time.Now().Format("15:04:05"),
@@ -54,6 +58,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("SWSS", "true")
 	w.Header().Set("Access-Control-Expose-Headers", "SWSS")
 
+<<<<<<< HEAD
+=======
+	fmt.Fprintln(w, string(summarycontent) + string(content))
+	
+
+>>>>>>> 3dde55217a337b31ab47cc3a32692b340f617133
 	// Log response details
 	success("[%s] Response sent: %d bytes in %v\n",
 		time.Now().Format("15:04:05"),

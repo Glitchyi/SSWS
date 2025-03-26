@@ -36,7 +36,7 @@ def extract_meta_tags(html_content):
     return meta_info
 
 # Load and process the HTML file
-html_file_path = "../static/index.html"  # Adjusted path since we're in utils folder
+html_file_path = "../public/summary.html"  # Adjusted path since we're in utils folder
 html_content = load_html_file(html_file_path)
 
 if html_content:

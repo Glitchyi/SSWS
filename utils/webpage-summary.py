@@ -81,4 +81,3 @@ def flask_app():
 
     return web_app
 
-#  !pip install langchain-groq langchain langchain-community langchain-huggingface langgraph bs4 playwright chromadb
