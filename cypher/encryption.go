@@ -119,6 +119,7 @@ func Encrypt() error {
 			return fmt.Errorf("marshaling JSON: %w", err)
 		}
 
+		
 		err = os.WriteFile("public/"+file.Name()+".json", jsonData, 0644)
 		if err != nil {
 			return fmt.Errorf("writing encrypted file %s: %w", file.Name(), err)

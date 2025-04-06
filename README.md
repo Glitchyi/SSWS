@@ -89,11 +89,13 @@ This can be undone using browser extension, that will unscramble the `Jumbled co
 
 ### Running the Server
 
-1. Generate keys using the `keys/keygen.py`, the requrements for the program are given in the `keys/requrements.txt`
+1. Generate keys using the `keys/keygen.py`, the requirements for the key gen programs is given in the `keys/requrements.txt`
 
 2. Public and private keys will be generated and these will be used to encrypt and decrypt the data. The client extension expects the private key named as `private_key.py` and `public_key.py` is the public key that the server uses.
 
-3. Start the Go server:
+3. Create a folder with the name `static` and put the content of your website in this folder.
+
+4. Start the Go server:
 
     ```sh
     go run .
