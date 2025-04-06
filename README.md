@@ -123,8 +123,8 @@ The steps are:
     chrome://extensions/
     ```
 
-    > [!NOTE]
-    > This is the extensions page for chrome where you will see all your install extensions
+> [!NOTE]
+> This is the extensions page for chrome where you will see all your install extensions
 
 2. **Toggle developer mode**
 
