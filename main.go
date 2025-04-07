@@ -53,12 +53,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.Header().Set("SWSS", "true")
 	w.Header().Set("Access-Control-Expose-Headers", "SWSS")
-
-	fmt.Fprintln(w, string(summarycontent) + string(content))
 	
 	// Log response details
 	success("[%s] Response sent: %d bytes in %v\n",
 		time.Now().Format("15:04:05"),
+		len(combinedContent),
 		time.Since(startTime),
 	)
 }

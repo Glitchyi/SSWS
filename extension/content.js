@@ -89,6 +89,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         document.open()
         document.write(decodedHTML)
         document.close()
+        location.reload();
         // document.getElementsByTagName("body")[0].innerHTML = decodedHTML;
         sendResponse({ result: "Decoded message" });
       } catch (error) {

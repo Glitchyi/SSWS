@@ -22,7 +22,7 @@ type EncryptedData struct {
 }
 
 func Encrypt() error {
-	// Read the public key
+	// Read the public key as bytes
 	keyBytes, err := os.ReadFile("keys/public_key.pem")
 	if err != nil {
 		return fmt.Errorf("reading public key: %w", err)
